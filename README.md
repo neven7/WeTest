@@ -95,3 +95,8 @@ fail(“用例信息”);
 
 
 
+相关内容介绍：
+
+ [JUnit结果重跑失败用例（支持Mvn和Ant）](http://blog.csdn.net/neven7/article/details/45221685) 
+ 
+ [JUnit4多线程执行测试用例](http://blog.csdn.net/neven7/article/details/45555687) 
