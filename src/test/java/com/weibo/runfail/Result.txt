@@ -1,0 +1,9 @@
+(一).Time's Result generated on: 2015.08.31 13:45:18,722
+(二).日志类型：ANT
+(三).日志名：/Users/hugang/myworkspace/AutoTestContent/src/test/java/com/weibo/runfail/TEST-com.weibo.cases.suite.LikeTestSuite.txt
+===================== 结果集 =====================
+用例总数：4, 成功数：3, 失败数：1, 运行时间：0 分钟 9 秒
+=================================================
+
+[testMultiType(com.weibo.cases.wanglei16.LikesByMeBatchLikeTest): testMultiType fail]
+
