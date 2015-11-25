@@ -106,7 +106,7 @@ public class ShowBatchExposureStatusTest {
 			e.printStackTrace();
 			fail("testSingleExposureBizId fail");		
 		} finally {
-			// 清除在try里构建的关系，本用例没有
+			// 清除在try里构建关系
 		}
 
 	}

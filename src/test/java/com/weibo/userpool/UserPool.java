@@ -12,8 +12,13 @@ import com.weibo.common.Utils;
 import com.weibo.global.Constant;
 import com.weibo.model.Account;
 
+/**
+ * 数据驱动，从DB中获取测试账号
+ * @author hugang
+ *
+ */
 public class UserPool {
-	// 取所有账号，只为清用户使用
+	
 	public static List<Account> getAllAccounts(int state, int total)
 			throws Exception {
 		List<Account> accountsList = new ArrayList();
@@ -99,17 +104,7 @@ public class UserPool {
 
 	}
 
-	/*
-	 * 支持不同用户 
-	 * type : 
-	 * 0 ORDINARY 普通账号 ; 
-	 * 1 CONTENT 内容账号 id:2668-2728, 50个;
-	 * 2 BLUE 蓝V id:2729-2786, 50个;
-	 * 3 ORANGE 橙V id:2787-2844, 50个;
-	 * 4 VIP 会员 id:2845-2906, 50个;
-	 * 5 TRUST 可信用户 id:2917-2966, 50个
-	 * 5 TRUSTC1 可信用户，并且为C1用户, 15个
-	 */
+
 	public static List<Account> getAccounts(int state, int total, int type)
 			throws Exception {
 		List<Account> accountsList = new ArrayList();
@@ -159,8 +154,7 @@ public class UserPool {
 				break;
 			}
 		}
-//			ps = con.prepareStatement("select * from account where state="
-//					+ state + " ORDER BY uid DESC");
+
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				String uid = rs.getString("uid");

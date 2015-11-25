@@ -14,8 +14,8 @@ import org.junit.runners.model.Statement;
 /**
  * Runs all tests in parallel and waits for them to complete. 
  * Up to {@link #maxThreads} will be run at once.
+ * 自定义runner: 单个测试类，方法并发执行
  * @hugang
- * 单个测试类，方法并发执行
  * 
  */
 public class ThreadRunner extends BlockJUnit4ClassRunner {

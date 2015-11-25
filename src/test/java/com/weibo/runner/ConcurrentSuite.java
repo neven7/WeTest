@@ -28,7 +28,14 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-// modify by hugang
+/**
+ * 
+ * 自定义runner, 并发执行
+ * 
+ * 
+ * @author hugang
+ *
+ */
 public final class ConcurrentSuite extends ClasspathSuite {
 
 	public static Runner MulThread(Runner runner) {
@@ -105,54 +112,6 @@ public final class ConcurrentSuite extends ClasspathSuite {
 												}
 											}
 										}
-
-										// 如果类有@Ignore,则输出所有方法名；否则，遍历方法，如果方法有@Ignore，则输出该方法
-										// if(testClass.isAnnotationPresent(Ignore.class)){
-										// for(Method method: methods){
-										// if(method.isAnnotationPresent(Test.class)){
-										// System.out.println("Ignore: " +
-										// testClass.getName() + "." +
-										// method.getName());
-										// }
-										// }
-										// }else{
-										// for(Method method: methods){
-										// if(method.isAnnotationPresent(Ignore.class)){
-										// System.out.println("Ignore: 222" +
-										// testClass.getName() + "." +
-										// method.getName());
-										// }
-										// }
-										// }
-										// Concurrent annotation = testClass
-										// .getAnnotation(Concurrent.class);
-										// Retry reAnnotation = testClass
-										// .getAnnotation(Retry.class);
-										//
-										// Method[] methods = testClass
-										// .getMethods();
-										// List<Retry> annotations = new
-										// ArrayList<Retry>();
-										// for (Method method : methods) {
-										// if (method
-										// .isAnnotationPresent(Retry.class)) {
-										// Retry retry = (Retry) method
-										// .getAnnotation(Retry.class);
-										// annotations.add(retry);
-										// }
-										//
-										// }
-										// if ((annotation != null)
-										// || (reAnnotation != null)
-										// || (!annotations.isEmpty())) {
-										// MbLogger.info(this.getClass()
-										// .getSimpleName()
-										// + "-------"
-										// + testClass.getSimpleName());
-										// // 重写
-										// return MulThread(
-										// testClass);
-										// }
 										return null;
 									}
 								}, ignoredBuilder(), annotatedBuilder(),

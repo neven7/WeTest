@@ -13,6 +13,13 @@ import org.apache.commons.dbutils.DbUtils;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
+/**
+ * 
+ * 
+ * jdbc 使用C3PO连接池 获得Connection
+ * @author hugang
+ *
+ */
 public class JdbcUtil {
 	private static Properties enc;
 	private static InputStream in;
@@ -48,21 +55,7 @@ public class JdbcUtil {
 	}
 
 	public static Connection getConnection() {
-//		Connection con = null;
-//		ComboPooledDataSource ds = null;
-//		if (ds == null) {
-//			try {
-//				ds = new ComboPooledDataSource();
-//				ds.setDriverClass(enc.getProperty("c3p0.driverClass"));
-//				ds.setUser(enc.getProperty("c3p0.user"));
-//				ds.setPassword(enc.getProperty("c3p0.password"));
-//				ds.setJdbcUrl(enc.getProperty("c3p0.jdbcUrl"));
-//				con = ds.getConnection();
-//			} catch (Exception e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
+
 		try {
 			
 			return ds.getConnection();

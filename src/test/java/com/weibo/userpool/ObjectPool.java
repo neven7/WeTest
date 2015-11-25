@@ -12,6 +12,12 @@ import com.weibo.global.Constant;
 import com.weibo.model.Account;
 import com.weibo.model.ObjectDB;
 
+/**
+ *  
+ * 数据驱动，从DB中获取测试数据
+ * @author hugang
+ *
+ */
 public class ObjectPool {
 	/*
 	 * @param type

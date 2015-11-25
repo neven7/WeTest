@@ -1,10 +1,6 @@
 package com.weibo.runner;
 
-/**
- * hugang
- * 
- * 运行中失败重试 runner
- */
+
 
 import java.lang.annotation.Annotation;
 
@@ -24,7 +20,11 @@ import org.junit.runners.model.Statement;
 
 import com.weibo.global.ParseProperties;
 
-
+/**
+ * 自定义runner, 运行中重试
+ * @author hugang
+ *
+ */
 public class RetryRunner extends BlockJUnit4ClassRunner {
 
 	private int retryTime;
