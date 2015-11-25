@@ -32,6 +32,9 @@ public class ExecuteCases {
 			String logPath, String logType) throws IOException {
 		String filePath = resultPath;
 		File file = new File(filePath);
+		if (file.exists()) {
+			file.delete();
+		}
 		if (!file.exists()) {
 			file.createNewFile();
 		}
@@ -59,12 +62,11 @@ public class ExecuteCases {
 		sb.append("\n");
 		fop.write(sb.toString().getBytes());
 		for (int j = 0; j < methodsResult.size(); j++) {
-			String failStr = methodsResult.get(j).getFailures().toString();
-			byte[] fail = failStr.getBytes();
-			fop.write(fail);
+			// 将JUnitCore失败信息中的换行符去掉, harmcrest中断言是多行显示
+			String LineFailStr = methodsResult.get(j).getFailures().toString().replaceAll("\n", "");
+			fop.write(LineFailStr.getBytes());
 			fop.write("\n".getBytes());
 			fop.write("\n".getBytes());
-			System.out.println(toMvn(failStr));
 		}
 		// 输出结果mvn格式, 便于前端展示
 		// Tests run: 5, Failures: 2, Errors: 0, Skipped: 0
@@ -73,37 +75,6 @@ public class ExecuteCases {
 		fop.close();
 	}
 
-	
-	// JUnitCore 失败用例信息:
-	//[TopFeedtest(com.weibo.cases.hugang.TopFeedIsReadAppStatusTest): 
-	//Expected: is "3871801799077168"
-    //	but: was "3871801840809363"]
-	// 
-	// 转成mvn格式, 便于前端解析:
-	//   AttitudePart1StatusTest.smokeWithNinePic:305 
-	// Expected: is <true>
-    // 	 but: was <false>
-	public String toMvn(String failStr){
-		String regex = "\\[(\\w+)\\((.*)\\)";
-		Pattern pattern = Pattern.compile(regex);
-		Matcher matcher = pattern.matcher(failStr);
-		String infoCase = "";
-		if (matcher.find()) {
-			 String[] className = matcher.group(2).split("\\.");
-			 int size = className.length;
-			 String methodName = matcher.group(1);
-			 // \\s{2}(\\w+)\\.(\\w+):\\d{1,}
-			// 模拟MVN 日志，回写 \s\sclassname.methodname:\d{1,}
-			 // 为了与MVN日志统一（正则匹配一致, 循环跑），完全类名去掉包名
-			 // com.weibo.cases.wanglei16.LikesByMeBatchTest
-			 infoCase = "  " + className[size-1] + "." + methodName + ":1";
-			 
-		}
-		return infoCase;	
-	}
-	
-	
-	
 	
 	// 方法级别并发执行
 	public void executorMethodCases(Map<Class<?>, List<String>> failcasesMap,
@@ -163,7 +134,6 @@ public class ExecuteCases {
 		// 回写日志, 根据logType回写不同格式的运行失败用例回日志文件， 简单工厂模式
 		WriteLogFactory wlf = new WriteLogFactory();
 		wlf.writeLog(logPath, logType, resultPath);
-
 	}
 
 	// 类级别并发执行

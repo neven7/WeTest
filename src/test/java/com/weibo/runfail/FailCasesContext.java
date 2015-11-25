@@ -20,7 +20,9 @@ public class FailCasesContext {
 		}
 		switch (typeNum) {
 		case 1:
-			FailCasesMvn fcm = new FailCasesMvn();
+//			FailCasesMvn fcm = new FailCasesMvn();
+			// 重构匹配mvn test
+			NewFailCasesMvn fcm = new NewFailCasesMvn();
 			fc = fcm;
 			break;
 		case 2:
@@ -30,7 +32,7 @@ public class FailCasesContext {
 		}
 	}
 	
-	public Map<Class<?>,List<String>> getFailCases(String logPath){
+	public Map<Class<?>,List<String>> getFailCases(String logPath) {
 		return fc.findFailedCases(logPath);
 	}
 	

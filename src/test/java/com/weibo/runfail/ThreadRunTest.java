@@ -6,7 +6,7 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Request;
 import org.junit.runner.Result;
 /*
- * @author hugang
+ * @author
  */
 //Callable<Result>实现类，一个线程执行一个case， 返回结果Result
 class ThreadRunTest implements Callable<Result>{

@@ -17,7 +17,8 @@ public class WriteLogFactory {
 
 		switch (typeNum) {
 		case 1:
-			new WriteLogMvn().writeLogMvn(logPath, resultPath);
+//			new WriteLogMvn().writeLogMvn(logPath, resultPath);
+			new NewWriteLogMvn().writeLogMvn(logPath, resultPath);
 			break;
 		case 2:
 			new WriteLogAnt().writeLogAnt(logPath, resultPath);

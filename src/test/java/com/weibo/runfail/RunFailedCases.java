@@ -5,18 +5,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 /*
+ * <pre>
+ *      根据ant/mvn 执行日志，执行失败用例
+ * </pre>
  * @author hugang
- * 
  */
 public class RunFailedCases {
 	
 	// 失败日志名
-//	public static final String LOGNAME = "425.txt";
+//	public static final String LOGNAME = "725.txt";
 //	// 日志类型，支持MVN, ANT等2种
 //	public static final String LOGTYPE = "MVN";
-	
-	// 失败日志名
-	public static final String LOGNAME = "TEST-com.weibo.cases.suite.LikeTestSuite.txt";
+//	
+//	// 失败日志名
+	public static final String LOGNAME = "TEST-com.weibo.cases.suite.HugangTestSuite.txt";
 	// 日志类型，支持MVN, ANT等2种
 	public static final String LOGTYPE = "ANT";
 	// 运行结果日志名，无需修改
