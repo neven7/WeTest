@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.weibo</groupId>
-	<artifactId>AutoTestContent</artifactId>
+	<artifactId>WeTest</artifactId>
 	<!-- <packaging>war</packaging> -->
 	<version>0.0.1</version>
-	<name>AutoTestContent Maven Webapp</name>
+	<name>WeTest Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
