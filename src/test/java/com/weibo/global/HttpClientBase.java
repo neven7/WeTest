@@ -113,7 +113,7 @@ public class HttpClientBase {
 			return null;
 		if(parameters.indexOf("source=") < 0) {
 			//parameters += "&source=" + ParseProperties.getSystemProperty("source");
-			parameters += "&source=2975945008";
+			parameters += "&source=";
 		}
 		String url = HTTPHEADER +host + relativeurl + "?" + parameters;
 		
