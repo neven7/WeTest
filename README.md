@@ -40,7 +40,10 @@ global.properties 测试环境设置，ip, port, appkey, retry默认设置。
 以shell脚本进行调度，根据不同模块，执行对应的build.xml;
 在build_***.xml中指定测试模块，shell脚本会根据你的选择，ant执行不同的xml，达到运行某个模块的功能。 
  
-二期已经使用Taobao toast自动化测试框架二次开发，前端调度。   
+二期已经使用Taobao toast自动化测试框架二次开发，前端调度。  
+http://blog.csdn.net/neven7/article/details/45022825
+http://blog.csdn.net/neven7/article/details/44886011
+
 ```
 ### 五.测试用例填写规范
 
