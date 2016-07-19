@@ -6,8 +6,8 @@ import com.weibo.runner.Concurrent;
 import com.weibo.runner.ConcurrentSuite;
 
 @RunWith(ConcurrentSuite.class)
-@ClassnameFilters({"com.weibo.cases.hugang.*Test"})
+@ClassnameFilters({"com.weibo.cases.example.*Test"})
 @Concurrent
-public interface IntegrationHugangModuleTests {
+public interface IntegrationExampleModuleTests {
 
 }

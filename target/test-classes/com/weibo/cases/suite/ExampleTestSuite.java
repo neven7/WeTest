@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Categories.class)
-@SuiteClasses( IntegrationHugangModuleTests.class )
-public class HugangTestSuite {
+@SuiteClasses( IntegrationExampleModuleTests.class )
+public class ExampleTestSuite {
 
 }
