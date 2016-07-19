@@ -1,0 +1,89 @@
+<project basedir="." default="sendmail" name="WeTest">
+
+	<tstamp>
+		<format property="NOW" pattern="yyyy-MM-ddHH-mm-ss" locale="cn" />
+	</tstamp>
+	<target name="init" description="设置初始化需要的路径变量">
+		<property name="lib" value="依赖的lib路径" />
+		<property name="build.dest" value="./target/test-classes" />
+		<property name="src" value="./src/test/java" />
+		<mkdir dir="./report" />
+		<property name="report" value="./report" />
+		<property name="mytime" value="${NOW}" />
+		<mkdir dir="./report/${NOW}" />
+		<property name="mail_to" value="收件人邮箱列表"/>
+		<path id="classpath">
+			<fileset dir="${lib}">
+				<include name="*.jar" />
+			</fileset>
+			<pathelement path="${java.class.path}" />
+		</path>
+	</target>
+
+	<target name="build" description="编译 java文件，拷贝 properties属性配置文件到编译后的路径下" depends="init">
+		<!--删除class文件-->
+		<delete>  
+		    <fileset dir="${build.dest}" includes="**/*.class"/>          
+		 </delete> 
+		<javac destdir="${build.dest}" srcdir="${src}" includeantruntime="on">
+			<classpath refid="classpath" />
+			<compilerarg line="-encoding UTF-8" />
+		</javac>
+		<!--将配置文件拷到class目录下-->
+		<copy todir="${build.dest}">
+			<fileset dir="${src}">
+				<include name="**/*.properties" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="testAll" depends="build">
+		<junit fork="yes" printsummary="true" forkmode="perBatch">
+			<classpath refid="classpath" />
+			<classpath>
+				<pathelement location="${lib}/*.jar" />
+				<pathelement location="${lib}/hamcrest-library-1.3.jar" />
+				<pathelement location="${lib}/hamcrest-core-1.3.jar" />
+				<pathelement location="${lib}/junit-4.11.jar" />
+				<pathelement location="${build.dest}" />
+				<pathelement path="${java.class.path}" />
+			</classpath>
+			<!--formatter type="brief" usefile="false"-->
+			<formatter type="brief" usefile="true" />
+			<formatter type="xml" />
+			<!--batchtest 同时运行多个测试用例 -->
+			<batchtest  todir="${report}/${mytime}">
+				<fileset dir="${build.dest}">
+					<include name="**/*ExampleTestSuite.class" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+
+	<target name="junitreport" depends="testAll">
+		<junitreport todir="${report}">
+			<fileset dir="${report}/${mytime}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="noframes" todir="${report}/${mytime}" />
+		</junitreport>
+	</target>
+
+
+	<target name="sendmail" depends="junitreport">
+	         <mail from="邮箱名" 
+	                     tolist="${mail_to}" 
+	                     mailhost="smtp.163.com" 
+	                     user="网易邮箱用户名" 
+	                     password="网易邮箱密码" 
+	                     subject="---Example用例集 JUNIT自动化结果---FAILED LOG PATH:${report}/${mytime}" 
+	              	     messagefile="${report}/${mytime}/junit-noframes.html"
+		             messagemimetype="text/html">
+		             <attachments>
+		                 <fileset dir="${report}/${mytime}">
+		                      <include name="**/*.txt" />
+		                 </fileset>                                                                                                                                           </attachments>
+	        </mail>
+	 </target>
+</project>
